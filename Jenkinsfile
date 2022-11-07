@@ -10,43 +10,15 @@ agent any
                              }
                              }
 
-            stage('MVN CLEAN')
-            {
-                steps{
-                sh  'mvn clean'
-                }
-            }
-            stage('MVN COMPILE')
-            {
-                steps{
-                sh  'mvn compile'
-                }
-            }
-
-
- stage('MVN SONARQUBE ')
-                                            {
-                                                steps{
-                                                sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
-                                                }
-                                            }
-                        stage('deploy nexus'){
-                                                      steps{
-                                                                 sh 'mvn  deploy'
-                                                                     }
-                                                               }
+    
 
 			    stage('Build docker image'){
                              steps{
-                                 script{
+                                 
                                     sh 'docker build -t nourhenekheriji/angular .'
-                                 }
                              }
                          }
-
-
-
-
+                         
       stage('Docker login') {
 
                                          steps {
