@@ -8,30 +8,14 @@ services:
       MYSQL_DATABASE: tpachato
     ports:
       - 3308:3308
-    networks:
-     - AppNet
 
-  spring-boot:
-    image: nourhenekheriji/springback
-    container_name: spring
-    ports:
-      - 8089:8089
-    depends_on:
-      - database
-    networks:
-      - AppNet
-    restart: on-failure
   angular:
     image: nourhenekheriji/angular
     container_name: angular
     ports:
       - 80:80
     depends_on:
-      - spring-boot
-    networks:
-      - AppNet
+      - database
 
-networks:
-  AppNet:
 
 
